@@ -1,4 +1,4 @@
-// Arna Web Service is a simple and powerful HTTP package for Flutter.
+/// Arna Web Service is a simple and powerful HTTP package for Flutter.
 library arna_web_service;
 
 import 'dart:convert' show jsonEncode;
