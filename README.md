@@ -16,7 +16,7 @@ Add Arna Web Service as a dependency in your pubspec.yaml:
 
 ```yaml
 dependencies:
-  arna_web_service: ^1.0.0
+  arna_web_service: ^1.1.0
 ```
 
 Import it:
@@ -25,10 +25,15 @@ Import it:
 import 'package:arna_web_service/arna_web_service.dart';
 ```
 
+Extend your class:
+
+```dart
+class APIController extends ArnaWebServiceController  {}
+```
+
 Use it!
 
 ```dart
-final ArnaWebService webService = ArnaWebService.service();
 final Response? response = await webService.get(
   Uri.parse('https://api.ipify.org'),
 );

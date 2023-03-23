@@ -14,17 +14,17 @@ packages:
     dependency: "direct main"
     description:
       name: arna_logger
-      sha256: "057a6b5da64b810aa6e0fa0c3796bd80cd2611e735d625267262a9f9370c9508"
+      sha256: f553d0bd98b82189925244f4593d36bd1d2aef9cde4903c4ffb78edd679093bc
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.5"
   arna_web_service:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.0.0"
+    version: "1.1.0"
   async:
     dependency: transitive
     description:

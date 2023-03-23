@@ -11,8 +11,7 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  final ArnaWebService webService = ArnaWebService.service();
+class _MyAppState extends State<MyApp> with ArnaWebServiceController {
   bool isLoading = false;
 
   Future<void> onButtonPressed() async {
