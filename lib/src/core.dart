@@ -1,6 +1,7 @@
 import 'dart:convert' show jsonEncode;
 
 import 'package:arna_logger/arna_logger.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' show Client, Response;
 
 /// The class that takes care of HTTP client and connections across multiple
@@ -13,6 +14,15 @@ class ArnaWebService {
 
   static final ArnaWebService _arnaWebService = ArnaWebService._();
   final Client _client = Client();
+
+  Future<bool> _checkConnectivity() async {
+    final ConnectivityResult connectivityResult =
+        await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      return false;
+    }
+    return true;
+  }
 
   Map<String, String> _updateHeaders({
     required final Map<String, String>? headers,
@@ -32,7 +42,14 @@ class ArnaWebService {
     final Map<String, String>? headers,
     final String serverKey = 'Authorization',
     final String? token,
+    final void Function()? onConnectionError,
   }) async {
+    final bool isConnected = await _checkConnectivity();
+    if (!isConnected) {
+      arnaLogger(data: 'Device not connected to any network');
+      onConnectionError?.call();
+      return null;
+    }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       serverKey: serverKey,
@@ -53,7 +70,14 @@ class ArnaWebService {
     final Map<String, String>? headers,
     final String serverKey = 'Authorization',
     final String? token,
+    final void Function()? onConnectionError,
   }) async {
+    final bool isConnected = await _checkConnectivity();
+    if (!isConnected) {
+      arnaLogger(data: 'Device not connected to any network');
+      onConnectionError?.call();
+      return null;
+    }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       serverKey: serverKey,
@@ -76,7 +100,14 @@ class ArnaWebService {
     final Map<String, dynamic>? body,
     final String serverKey = 'Authorization',
     final String? token,
+    final void Function()? onConnectionError,
   }) async {
+    final bool isConnected = await _checkConnectivity();
+    if (!isConnected) {
+      arnaLogger(data: 'Device not connected to any network');
+      onConnectionError?.call();
+      return null;
+    }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       serverKey: serverKey,
@@ -106,7 +137,14 @@ class ArnaWebService {
     final Map<String, dynamic>? body,
     final String serverKey = 'Authorization',
     final String? token,
+    final void Function()? onConnectionError,
   }) async {
+    final bool isConnected = await _checkConnectivity();
+    if (!isConnected) {
+      arnaLogger(data: 'Device not connected to any network');
+      onConnectionError?.call();
+      return null;
+    }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       serverKey: serverKey,
@@ -136,7 +174,14 @@ class ArnaWebService {
     final Map<String, dynamic>? body,
     final String serverKey = 'Authorization',
     final String? token,
+    final void Function()? onConnectionError,
   }) async {
+    final bool isConnected = await _checkConnectivity();
+    if (!isConnected) {
+      arnaLogger(data: 'Device not connected to any network');
+      onConnectionError?.call();
+      return null;
+    }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       serverKey: serverKey,
@@ -165,7 +210,14 @@ class ArnaWebService {
     final Map<String, dynamic>? body,
     final String serverKey = 'Authorization',
     final String? token,
+    final void Function()? onConnectionError,
   }) async {
+    final bool isConnected = await _checkConnectivity();
+    if (!isConnected) {
+      arnaLogger(data: 'Device not connected to any network');
+      onConnectionError?.call();
+      return null;
+    }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       serverKey: serverKey,
