@@ -8,30 +8,34 @@
 
 ## Introduction
 
-A simple and powerful HTTP package for Flutter.
+This is a Flutter plugin that provides a simple and powerful way to connect to HTTP-based web services from your Flutter app.
 
-## Getting Started
+## Installation
 
 Add Arna Web Service as a dependency in your pubspec.yaml:
 
 ```yaml
 dependencies:
-  arna_web_service: ^1.1.0
+  arna_web_service: ^1.2.0
 ```
 
-Import it:
+Then, run flutter pub get to install the package.
+
+## Usage
+
+To use the web Service in your application, simply import the package:
 
 ```dart
 import 'package:arna_web_service/arna_web_service.dart';
 ```
 
-Extend your class:
+After that extend your class:
 
 ```dart
 class APIController extends ArnaWebServiceController  {}
 ```
 
-Use it!
+You can then use the web service to make API calls:
 
 ```dart
 final Response? response = await webService.get(
@@ -39,3 +43,11 @@ final Response? response = await webService.get(
 );
 
 ```
+
+## License
+
+Arna Web Service is [BSD 3-Clause licensed](./LICENSE).
+
+## Contributing
+
+Contributions are welcome! If you find a bug or want to add a new feature, please open an issue or submit a pull request.
