@@ -37,6 +37,16 @@ class ArnaWebService {
     return finalHeaders;
   }
 
+  void _logger(
+    final bool useLogger, {
+    final String? title,
+    final dynamic data,
+  }) {
+    if (useLogger) {
+      arnaLogger(title: title, data: data);
+    }
+  }
+
   /// Sends an HTTP HEAD request with the given headers to the given URL.
   Future<Response?> head(
     final Uri url, {
@@ -46,10 +56,11 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final bool useLogger = false,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
-      arnaLogger(data: 'Device not connected to any network');
+      _logger(useLogger, data: 'Device not connected to any network');
       onConnectionError?.call();
       return null;
     }
@@ -58,17 +69,17 @@ class ArnaWebService {
       serverKey: serverKey,
       token: token,
     );
-    arnaLogger(title: 'Head - Headers', data: finalHeaders);
+    _logger(useLogger, title: 'Head - Headers', data: finalHeaders);
     try {
       return await _client
           .head(url, headers: finalHeaders)
           .timeout(timeoutDuration);
     } on TimeoutException catch (e) {
-      arnaLogger(title: 'Head - Timeout', data: e);
+      _logger(useLogger, title: 'Head - Timeout', data: e);
       onTimeout?.call();
       return null;
     } catch (e) {
-      arnaLogger(title: 'Head - Error', data: e);
+      _logger(useLogger, title: 'Head - Error', data: e);
       return null;
     }
   }
@@ -82,10 +93,11 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final bool useLogger = false,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
-      arnaLogger(data: 'Device not connected to any network');
+      _logger(useLogger, data: 'Device not connected to any network');
       onConnectionError?.call();
       return null;
     }
@@ -94,17 +106,17 @@ class ArnaWebService {
       serverKey: serverKey,
       token: token,
     );
-    arnaLogger(title: 'Get - Headers', data: finalHeaders);
+    _logger(useLogger, title: 'Get - Headers', data: finalHeaders);
     try {
       return await _client
           .get(url, headers: finalHeaders)
           .timeout(timeoutDuration);
     } on TimeoutException catch (e) {
-      arnaLogger(title: 'Get - Timeout', data: e);
+      _logger(useLogger, title: 'Get - Timeout', data: e);
       onTimeout?.call();
       return null;
     } catch (e) {
-      arnaLogger(title: 'Get - Error', data: e);
+      _logger(useLogger, title: 'Get - Error', data: e);
       return null;
     }
   }
@@ -120,10 +132,11 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final bool useLogger = false,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
-      arnaLogger(data: 'Device not connected to any network');
+      _logger(useLogger, data: 'Device not connected to any network');
       onConnectionError?.call();
       return null;
     }
@@ -132,9 +145,9 @@ class ArnaWebService {
       serverKey: serverKey,
       token: token,
     );
-    arnaLogger(title: 'Post - Headers', data: finalHeaders);
+    _logger(useLogger, title: 'Post - Headers', data: finalHeaders);
     if (body != null) {
-      arnaLogger(title: 'Post - Body', data: body);
+      _logger(useLogger, title: 'Post - Body', data: body);
     }
     try {
       return await _client
@@ -145,11 +158,11 @@ class ArnaWebService {
           )
           .timeout(timeoutDuration);
     } on TimeoutException catch (e) {
-      arnaLogger(title: 'Post - Timeout', data: e);
+      _logger(useLogger, title: 'Post - Timeout', data: e);
       onTimeout?.call();
       return null;
     } catch (e) {
-      arnaLogger(title: 'Post - Error', data: e);
+      _logger(useLogger, title: 'Post - Error', data: e);
       return null;
     }
   }
@@ -165,10 +178,11 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final bool useLogger = false,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
-      arnaLogger(data: 'Device not connected to any network');
+      _logger(useLogger, data: 'Device not connected to any network');
       onConnectionError?.call();
       return null;
     }
@@ -177,9 +191,9 @@ class ArnaWebService {
       serverKey: serverKey,
       token: token,
     );
-    arnaLogger(title: 'Put - Headers', data: finalHeaders);
+    _logger(useLogger, title: 'Put - Headers', data: finalHeaders);
     if (body != null) {
-      arnaLogger(title: 'Post - Body', data: body);
+      _logger(useLogger, title: 'Post - Body', data: body);
     }
     try {
       return await _client
@@ -190,11 +204,11 @@ class ArnaWebService {
           )
           .timeout(timeoutDuration);
     } on TimeoutException catch (e) {
-      arnaLogger(title: 'Put - Timeout', data: e);
+      _logger(useLogger, title: 'Put - Timeout', data: e);
       onTimeout?.call();
       return null;
     } catch (e) {
-      arnaLogger(title: 'Put - Error', data: e);
+      _logger(useLogger, title: 'Put - Error', data: e);
       return null;
     }
   }
@@ -210,10 +224,11 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final bool useLogger = false,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
-      arnaLogger(data: 'Device not connected to any network');
+      _logger(useLogger, data: 'Device not connected to any network');
       onConnectionError?.call();
       return null;
     }
@@ -222,9 +237,9 @@ class ArnaWebService {
       serverKey: serverKey,
       token: token,
     );
-    arnaLogger(title: 'Patch - Headers', data: finalHeaders);
+    _logger(useLogger, title: 'Patch - Headers', data: finalHeaders);
     if (body != null) {
-      arnaLogger(title: 'Patch - Body', data: body);
+      _logger(useLogger, title: 'Patch - Body', data: body);
     }
     try {
       return await _client
@@ -235,11 +250,11 @@ class ArnaWebService {
           )
           .timeout(timeoutDuration);
     } on TimeoutException catch (e) {
-      arnaLogger(title: 'Patch - Timeout', data: e);
+      _logger(useLogger, title: 'Patch - Timeout', data: e);
       onTimeout?.call();
       return null;
     } catch (e) {
-      arnaLogger(title: 'Patch - Error', data: e);
+      _logger(useLogger, title: 'Patch - Error', data: e);
       return null;
     }
   }
@@ -254,10 +269,11 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final bool useLogger = false,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
-      arnaLogger(data: 'Device not connected to any network');
+      _logger(useLogger, data: 'Device not connected to any network');
       onConnectionError?.call();
       return null;
     }
@@ -266,9 +282,9 @@ class ArnaWebService {
       serverKey: serverKey,
       token: token,
     );
-    arnaLogger(title: 'Delete - Headers', data: finalHeaders);
+    _logger(useLogger, title: 'Delete - Headers', data: finalHeaders);
     if (body != null) {
-      arnaLogger(title: 'Delete - Body', data: body);
+      _logger(useLogger, title: 'Delete - Body', data: body);
     }
     try {
       return await _client
@@ -279,11 +295,11 @@ class ArnaWebService {
           )
           .timeout(timeoutDuration);
     } on TimeoutException catch (e) {
-      arnaLogger(title: 'Delete - Timeout', data: e);
+      _logger(useLogger, title: 'Delete - Timeout', data: e);
       onTimeout?.call();
       return null;
     } catch (e) {
-      arnaLogger(title: 'Delete - Error', data: e);
+      _logger(useLogger, title: 'Delete - Error', data: e);
       return null;
     }
   }
