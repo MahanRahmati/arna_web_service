@@ -1,3 +1,4 @@
+import 'dart:async' show TimeoutException;
 import 'dart:convert' show jsonEncode;
 
 import 'package:arna_logger/arna_logger.dart';
@@ -43,6 +44,8 @@ class ArnaWebService {
     final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
+    final Duration timeoutDuration = const Duration(seconds: 5),
+    final void Function()? onTimeout,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
@@ -57,7 +60,13 @@ class ArnaWebService {
     );
     arnaLogger(title: 'Head - Headers', data: finalHeaders);
     try {
-      return await _client.head(url, headers: finalHeaders);
+      return await _client
+          .head(url, headers: finalHeaders)
+          .timeout(timeoutDuration);
+    } on TimeoutException catch (e) {
+      arnaLogger(title: 'Head - Timeout', data: e);
+      onTimeout?.call();
+      return null;
     } catch (e) {
       arnaLogger(title: 'Head - Error', data: e);
       return null;
@@ -71,6 +80,8 @@ class ArnaWebService {
     final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
+    final Duration timeoutDuration = const Duration(seconds: 5),
+    final void Function()? onTimeout,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
@@ -85,7 +96,13 @@ class ArnaWebService {
     );
     arnaLogger(title: 'Get - Headers', data: finalHeaders);
     try {
-      return await _client.get(url, headers: finalHeaders);
+      return await _client
+          .get(url, headers: finalHeaders)
+          .timeout(timeoutDuration);
+    } on TimeoutException catch (e) {
+      arnaLogger(title: 'Get - Timeout', data: e);
+      onTimeout?.call();
+      return null;
     } catch (e) {
       arnaLogger(title: 'Get - Error', data: e);
       return null;
@@ -101,6 +118,8 @@ class ArnaWebService {
     final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
+    final Duration timeoutDuration = const Duration(seconds: 5),
+    final void Function()? onTimeout,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
@@ -118,11 +137,17 @@ class ArnaWebService {
       arnaLogger(title: 'Post - Body', data: body);
     }
     try {
-      return await _client.post(
-        url,
-        headers: finalHeaders,
-        body: body == null ? null : jsonEncode(body),
-      );
+      return await _client
+          .post(
+            url,
+            headers: finalHeaders,
+            body: body == null ? null : jsonEncode(body),
+          )
+          .timeout(timeoutDuration);
+    } on TimeoutException catch (e) {
+      arnaLogger(title: 'Post - Timeout', data: e);
+      onTimeout?.call();
+      return null;
     } catch (e) {
       arnaLogger(title: 'Post - Error', data: e);
       return null;
@@ -138,6 +163,8 @@ class ArnaWebService {
     final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
+    final Duration timeoutDuration = const Duration(seconds: 5),
+    final void Function()? onTimeout,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
@@ -155,11 +182,17 @@ class ArnaWebService {
       arnaLogger(title: 'Post - Body', data: body);
     }
     try {
-      return await _client.put(
-        url,
-        headers: finalHeaders,
-        body: body == null ? null : jsonEncode(body),
-      );
+      return await _client
+          .put(
+            url,
+            headers: finalHeaders,
+            body: body == null ? null : jsonEncode(body),
+          )
+          .timeout(timeoutDuration);
+    } on TimeoutException catch (e) {
+      arnaLogger(title: 'Put - Timeout', data: e);
+      onTimeout?.call();
+      return null;
     } catch (e) {
       arnaLogger(title: 'Put - Error', data: e);
       return null;
@@ -175,6 +208,8 @@ class ArnaWebService {
     final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
+    final Duration timeoutDuration = const Duration(seconds: 5),
+    final void Function()? onTimeout,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
@@ -192,11 +227,17 @@ class ArnaWebService {
       arnaLogger(title: 'Patch - Body', data: body);
     }
     try {
-      return await _client.patch(
-        url,
-        headers: finalHeaders,
-        body: body == null ? null : jsonEncode(body),
-      );
+      return await _client
+          .patch(
+            url,
+            headers: finalHeaders,
+            body: body == null ? null : jsonEncode(body),
+          )
+          .timeout(timeoutDuration);
+    } on TimeoutException catch (e) {
+      arnaLogger(title: 'Patch - Timeout', data: e);
+      onTimeout?.call();
+      return null;
     } catch (e) {
       arnaLogger(title: 'Patch - Error', data: e);
       return null;
@@ -211,6 +252,8 @@ class ArnaWebService {
     final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
+    final Duration timeoutDuration = const Duration(seconds: 5),
+    final void Function()? onTimeout,
   }) async {
     final bool isConnected = await _checkConnectivity();
     if (!isConnected) {
@@ -228,11 +271,17 @@ class ArnaWebService {
       arnaLogger(title: 'Delete - Body', data: body);
     }
     try {
-      return await _client.delete(
-        url,
-        headers: finalHeaders,
-        body: body == null ? null : jsonEncode(body),
-      );
+      return await _client
+          .delete(
+            url,
+            headers: finalHeaders,
+            body: body == null ? null : jsonEncode(body),
+          )
+          .timeout(timeoutDuration);
+    } on TimeoutException catch (e) {
+      arnaLogger(title: 'Delete - Timeout', data: e);
+      onTimeout?.call();
+      return null;
     } catch (e) {
       arnaLogger(title: 'Delete - Error', data: e);
       return null;
