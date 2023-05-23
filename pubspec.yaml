@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.13.6
+  http: ">=0.13.6 <2.0.0"
   arna_logger: ^1.0.7
   connectivity_plus: ^4.0.1
 
