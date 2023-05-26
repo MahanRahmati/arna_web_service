@@ -1,3 +1,7 @@
+## 1.4.0
+
+- Update to dart 3
+
 ## 1.3.0
 
 - Fix compatibility with AGP 8.0.
