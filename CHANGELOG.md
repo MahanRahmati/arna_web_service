@@ -1,3 +1,8 @@
+## 1.5.0
+
+- Bump http
+- Add Topics
+
 ## 1.4.0
 
 - Update to dart 3
