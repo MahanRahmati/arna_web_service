@@ -27,12 +27,11 @@ class ArnaWebService {
 
   Map<String, String> _updateHeaders({
     required final Map<String, String>? headers,
-    required final String serverKey,
     required final String? token,
   }) {
     final Map<String, String> finalHeaders = headers ?? <String, String>{};
     if (token != null) {
-      finalHeaders.addAll(<String, String>{serverKey: 'Bearer $token'});
+      finalHeaders.addAll(<String, String>{'Authorization': 'Bearer $token'});
     }
     return finalHeaders;
   }
@@ -51,7 +50,6 @@ class ArnaWebService {
   Future<Response?> head(
     final Uri url, {
     final Map<String, String>? headers,
-    final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -66,7 +64,6 @@ class ArnaWebService {
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
-      serverKey: serverKey,
       token: token,
     );
     _logger(useLogger, title: 'Head - Headers', data: finalHeaders);
@@ -88,7 +85,6 @@ class ArnaWebService {
   Future<Response?> get(
     final Uri url, {
     final Map<String, String>? headers,
-    final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -103,7 +99,6 @@ class ArnaWebService {
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
-      serverKey: serverKey,
       token: token,
     );
     _logger(useLogger, title: 'Get - Headers', data: finalHeaders);
@@ -127,7 +122,6 @@ class ArnaWebService {
     final Uri url, {
     final Map<String, String>? headers,
     final Map<String, dynamic>? body,
-    final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -142,7 +136,6 @@ class ArnaWebService {
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
-      serverKey: serverKey,
       token: token,
     );
     _logger(useLogger, title: 'Post - Headers', data: finalHeaders);
@@ -173,7 +166,6 @@ class ArnaWebService {
     final Uri url, {
     final Map<String, String>? headers,
     final Map<String, dynamic>? body,
-    final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -188,7 +180,6 @@ class ArnaWebService {
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
-      serverKey: serverKey,
       token: token,
     );
     _logger(useLogger, title: 'Put - Headers', data: finalHeaders);
@@ -219,7 +210,6 @@ class ArnaWebService {
     final Uri url, {
     final Map<String, String>? headers,
     final Map<String, dynamic>? body,
-    final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -234,7 +224,6 @@ class ArnaWebService {
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
-      serverKey: serverKey,
       token: token,
     );
     _logger(useLogger, title: 'Patch - Headers', data: finalHeaders);
@@ -264,7 +253,6 @@ class ArnaWebService {
     final Uri url, {
     final Map<String, String>? headers,
     final Map<String, dynamic>? body,
-    final String serverKey = 'Authorization',
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -279,7 +267,6 @@ class ArnaWebService {
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
-      serverKey: serverKey,
       token: token,
     );
     _logger(useLogger, title: 'Delete - Headers', data: finalHeaders);

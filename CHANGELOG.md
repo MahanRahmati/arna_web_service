@@ -1,5 +1,6 @@
 ## 1.5.0
 
+- Add MessageException
 - Bump http
 - Add Topics
 
