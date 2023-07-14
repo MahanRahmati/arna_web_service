@@ -1,3 +1,7 @@
+## 1.7.0
+
+- Export dart:convert
+
 ## 1.6.0
 
 - Add ResponseUtils
