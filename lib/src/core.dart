@@ -55,12 +55,15 @@ class ArnaWebService {
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
     final bool useLogger = false,
+    final bool checkConnectivity = true,
   }) async {
-    final bool isConnected = await _checkConnectivity();
-    if (!isConnected) {
-      _logger(useLogger, data: 'Device not connected to any network');
-      onConnectionError?.call();
-      return null;
+    if (checkConnectivity) {
+      final bool isConnected = await _checkConnectivity();
+      if (!isConnected) {
+        _logger(useLogger, data: 'Device not connected to any network');
+        onConnectionError?.call();
+        return null;
+      }
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
@@ -90,12 +93,15 @@ class ArnaWebService {
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
     final bool useLogger = false,
+    final bool checkConnectivity = true,
   }) async {
-    final bool isConnected = await _checkConnectivity();
-    if (!isConnected) {
-      _logger(useLogger, data: 'Device not connected to any network');
-      onConnectionError?.call();
-      return null;
+    if (checkConnectivity) {
+      final bool isConnected = await _checkConnectivity();
+      if (!isConnected) {
+        _logger(useLogger, data: 'Device not connected to any network');
+        onConnectionError?.call();
+        return null;
+      }
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
@@ -127,12 +133,15 @@ class ArnaWebService {
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
     final bool useLogger = false,
+    final bool checkConnectivity = true,
   }) async {
-    final bool isConnected = await _checkConnectivity();
-    if (!isConnected) {
-      _logger(useLogger, data: 'Device not connected to any network');
-      onConnectionError?.call();
-      return null;
+    if (checkConnectivity) {
+      final bool isConnected = await _checkConnectivity();
+      if (!isConnected) {
+        _logger(useLogger, data: 'Device not connected to any network');
+        onConnectionError?.call();
+        return null;
+      }
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
@@ -171,12 +180,15 @@ class ArnaWebService {
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
     final bool useLogger = false,
+    final bool checkConnectivity = true,
   }) async {
-    final bool isConnected = await _checkConnectivity();
-    if (!isConnected) {
-      _logger(useLogger, data: 'Device not connected to any network');
-      onConnectionError?.call();
-      return null;
+    if (checkConnectivity) {
+      final bool isConnected = await _checkConnectivity();
+      if (!isConnected) {
+        _logger(useLogger, data: 'Device not connected to any network');
+        onConnectionError?.call();
+        return null;
+      }
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
@@ -215,12 +227,15 @@ class ArnaWebService {
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
     final bool useLogger = false,
+    final bool checkConnectivity = true,
   }) async {
-    final bool isConnected = await _checkConnectivity();
-    if (!isConnected) {
-      _logger(useLogger, data: 'Device not connected to any network');
-      onConnectionError?.call();
-      return null;
+    if (checkConnectivity) {
+      final bool isConnected = await _checkConnectivity();
+      if (!isConnected) {
+        _logger(useLogger, data: 'Device not connected to any network');
+        onConnectionError?.call();
+        return null;
+      }
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
@@ -258,12 +273,15 @@ class ArnaWebService {
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
     final bool useLogger = false,
+    final bool checkConnectivity = true,
   }) async {
-    final bool isConnected = await _checkConnectivity();
-    if (!isConnected) {
-      _logger(useLogger, data: 'Device not connected to any network');
-      onConnectionError?.call();
-      return null;
+    if (checkConnectivity) {
+      final bool isConnected = await _checkConnectivity();
+      if (!isConnected) {
+        _logger(useLogger, data: 'Device not connected to any network');
+        onConnectionError?.call();
+        return null;
+      }
     }
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},

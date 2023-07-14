@@ -1,3 +1,9 @@
+## 1.6.0
+
+- Add ResponseUtils
+- Add StatusCodes
+- Add ability to disable connectivity check
+
 ## 1.5.0
 
 - Add MessageException
