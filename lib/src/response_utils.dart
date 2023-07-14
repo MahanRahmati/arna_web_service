@@ -1,4 +1,9 @@
-import 'package:arna_web_service/arna_web_service.dart';
+import 'dart:convert' show utf8;
+
+import 'package:http/http.dart' show Response;
+
+import '/src/message_exception.dart';
+import '/src/status_code.dart';
 
 /// Tools to work with HTTP response.
 class ResponseUtils {
