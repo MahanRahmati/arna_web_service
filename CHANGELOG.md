@@ -1,6 +1,8 @@
 ## 1.7.0
 
 - Export dart:convert
+- Update imports
+- Add more topics
 
 ## 1.6.0
 
