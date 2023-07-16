@@ -1,3 +1,7 @@
+## 1.8.0
+
+- Add logic for queryParameters
+
 ## 1.7.0
 
 - Export dart:convert

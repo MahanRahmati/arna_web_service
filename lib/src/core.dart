@@ -48,8 +48,9 @@ class ArnaWebService {
 
   /// Sends an HTTP HEAD request with the given headers to the given URL.
   Future<Response?> head(
-    final Uri url, {
+    Uri uri, {
     final Map<String, String>? headers,
+    final Map<String, dynamic>? queryParameters,
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -57,6 +58,7 @@ class ArnaWebService {
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
+    // Connectivity check
     if (checkConnectivity) {
       final bool isConnected = await _checkConnectivity();
       if (!isConnected) {
@@ -65,14 +67,27 @@ class ArnaWebService {
         return null;
       }
     }
+
+    // Headers
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       token: token,
     );
     _logger(useLogger, title: 'Head - Headers', data: finalHeaders);
+
+    // QueryParameters
+    if (queryParameters != null) {
+      uri = uri.replace(queryParameters: queryParameters);
+      _logger(
+        useLogger,
+        title: 'Head - QueryParameters',
+        data: queryParameters,
+      );
+    }
+
     try {
       return await _client
-          .head(url, headers: finalHeaders)
+          .head(uri, headers: finalHeaders)
           .timeout(timeoutDuration);
     } on TimeoutException catch (e) {
       _logger(useLogger, title: 'Head - Timeout', data: e);
@@ -86,8 +101,9 @@ class ArnaWebService {
 
   /// Sends an HTTP GET request with the given headers to the given URL.
   Future<Response?> get(
-    final Uri url, {
+    Uri uri, {
     final Map<String, String>? headers,
+    final Map<String, dynamic>? queryParameters,
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -95,6 +111,7 @@ class ArnaWebService {
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
+    // Connectivity check
     if (checkConnectivity) {
       final bool isConnected = await _checkConnectivity();
       if (!isConnected) {
@@ -103,14 +120,23 @@ class ArnaWebService {
         return null;
       }
     }
+
+    // Headers
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       token: token,
     );
     _logger(useLogger, title: 'Get - Headers', data: finalHeaders);
+
+    // QueryParameters
+    if (queryParameters != null) {
+      uri = uri.replace(queryParameters: queryParameters);
+      _logger(useLogger, title: 'Get - QueryParameters', data: queryParameters);
+    }
+
     try {
       return await _client
-          .get(url, headers: finalHeaders)
+          .get(uri, headers: finalHeaders)
           .timeout(timeoutDuration);
     } on TimeoutException catch (e) {
       _logger(useLogger, title: 'Get - Timeout', data: e);
@@ -125,8 +151,9 @@ class ArnaWebService {
   /// Sends an HTTP POST request with the given headers and body to the given
   /// URL.
   Future<Response?> post(
-    final Uri url, {
+    Uri uri, {
     final Map<String, String>? headers,
+    final Map<String, dynamic>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -135,6 +162,7 @@ class ArnaWebService {
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
+    // Connectivity check
     if (checkConnectivity) {
       final bool isConnected = await _checkConnectivity();
       if (!isConnected) {
@@ -143,18 +171,33 @@ class ArnaWebService {
         return null;
       }
     }
+
+    // Headers
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       token: token,
     );
     _logger(useLogger, title: 'Post - Headers', data: finalHeaders);
+
+    // QueryParameters
+    if (queryParameters != null) {
+      uri = uri.replace(queryParameters: queryParameters);
+      _logger(
+        useLogger,
+        title: 'Post - QueryParameters',
+        data: queryParameters,
+      );
+    }
+
+    // Body
     if (body != null) {
       _logger(useLogger, title: 'Post - Body', data: body);
     }
+
     try {
       return await _client
           .post(
-            url,
+            uri,
             headers: finalHeaders,
             body: body == null ? null : jsonEncode(body),
           )
@@ -172,8 +215,9 @@ class ArnaWebService {
   /// Sends an HTTP PUT request with the given headers and body to the given
   /// URL.
   Future<Response?> put(
-    final Uri url, {
+    Uri uri, {
     final Map<String, String>? headers,
+    final Map<String, dynamic>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -182,6 +226,7 @@ class ArnaWebService {
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
+    // Connectivity check
     if (checkConnectivity) {
       final bool isConnected = await _checkConnectivity();
       if (!isConnected) {
@@ -190,18 +235,28 @@ class ArnaWebService {
         return null;
       }
     }
+
+    // Headers
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       token: token,
     );
     _logger(useLogger, title: 'Put - Headers', data: finalHeaders);
+
+    // QueryParameters
+    if (queryParameters != null) {
+      uri = uri.replace(queryParameters: queryParameters);
+      _logger(useLogger, title: 'Put - QueryParameters', data: queryParameters);
+    }
+
+    // Body
     if (body != null) {
       _logger(useLogger, title: 'Post - Body', data: body);
     }
     try {
       return await _client
           .put(
-            url,
+            uri,
             headers: finalHeaders,
             body: body == null ? null : jsonEncode(body),
           )
@@ -219,8 +274,9 @@ class ArnaWebService {
   /// Sends an HTTP PATCH request with the given headers and body to the given
   /// URL.
   Future<Response?> patch(
-    final Uri url, {
+    Uri uri, {
     final Map<String, String>? headers,
+    final Map<String, dynamic>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -229,6 +285,7 @@ class ArnaWebService {
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
+    // Connectivity check
     if (checkConnectivity) {
       final bool isConnected = await _checkConnectivity();
       if (!isConnected) {
@@ -237,18 +294,32 @@ class ArnaWebService {
         return null;
       }
     }
+
+    // Headers
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       token: token,
     );
     _logger(useLogger, title: 'Patch - Headers', data: finalHeaders);
+
+    // QueryParameters
+    if (queryParameters != null) {
+      uri = uri.replace(queryParameters: queryParameters);
+      _logger(
+        useLogger,
+        title: 'Patch - QueryParameters',
+        data: queryParameters,
+      );
+    }
+
+    // Body
     if (body != null) {
       _logger(useLogger, title: 'Patch - Body', data: body);
     }
     try {
       return await _client
           .patch(
-            url,
+            uri,
             headers: finalHeaders,
             body: body == null ? null : jsonEncode(body),
           )
@@ -265,8 +336,9 @@ class ArnaWebService {
 
   /// Sends an HTTP DELETE request with the given headers to the given URL.
   Future<Response?> delete(
-    final Uri url, {
+    Uri uri, {
     final Map<String, String>? headers,
+    final Map<String, dynamic>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -275,6 +347,7 @@ class ArnaWebService {
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
+    // Connectivity check
     if (checkConnectivity) {
       final bool isConnected = await _checkConnectivity();
       if (!isConnected) {
@@ -283,18 +356,32 @@ class ArnaWebService {
         return null;
       }
     }
+
+    // Headers
     final Map<String, String> finalHeaders = _updateHeaders(
       headers: headers ?? <String, String>{},
       token: token,
     );
     _logger(useLogger, title: 'Delete - Headers', data: finalHeaders);
+
+    // QueryParameters
+    if (queryParameters != null) {
+      uri = uri.replace(queryParameters: queryParameters);
+      _logger(
+        useLogger,
+        title: 'Delete - QueryParameters',
+        data: queryParameters,
+      );
+    }
+
+    // Body
     if (body != null) {
       _logger(useLogger, title: 'Delete - Body', data: body);
     }
     try {
       return await _client
           .delete(
-            url,
+            uri,
             headers: finalHeaders,
             body: body == null ? null : jsonEncode(body),
           )
