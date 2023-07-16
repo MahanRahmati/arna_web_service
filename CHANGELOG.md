@@ -1,6 +1,7 @@
 ## 1.8.0
 
 - Add logic for queryParameters
+- Bump Arna logger
 
 ## 1.7.0
 

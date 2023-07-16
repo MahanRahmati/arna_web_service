@@ -30,10 +30,10 @@ packages:
     dependency: "direct main"
     description:
       name: arna_logger
-      sha256: "50582636223b644e086a6708841c15d16f29ded0e25d7c9e346315908f1efbeb"
+      sha256: bd8ba1c6520852844193684e2c0f9d9c2905eb552770700d8dc55fd79845558a
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.7"
+    version: "1.1.0"
   arna_web_service:
     dependency: "direct main"
     description:
