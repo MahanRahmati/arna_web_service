@@ -50,7 +50,7 @@ class ArnaWebService {
   Future<Response?> head(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, dynamic>? queryParameters,
+    final Map<String, String>? queryParameters,
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -103,7 +103,7 @@ class ArnaWebService {
   Future<Response?> get(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, dynamic>? queryParameters,
+    final Map<String, String>? queryParameters,
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -153,7 +153,7 @@ class ArnaWebService {
   Future<Response?> post(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, dynamic>? queryParameters,
+    final Map<String, String>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -217,7 +217,7 @@ class ArnaWebService {
   Future<Response?> put(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, dynamic>? queryParameters,
+    final Map<String, String>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -276,7 +276,7 @@ class ArnaWebService {
   Future<Response?> patch(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, dynamic>? queryParameters,
+    final Map<String, String>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -338,7 +338,7 @@ class ArnaWebService {
   Future<Response?> delete(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, dynamic>? queryParameters,
+    final Map<String, String>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
