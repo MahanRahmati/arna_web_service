@@ -1,4 +1,4 @@
-// ignore_for_file: constant_identifier_names,, no_default_cases
+// ignore_for_file: constant_identifier_names, no_default_cases
 
 /// HTTP status code
 enum StatusCode {

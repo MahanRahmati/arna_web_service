@@ -3,7 +3,7 @@ library arna_web_service;
 
 export 'dart:convert';
 
-export 'package:http/http.dart';
+export 'package:dio/dio.dart';
 
 export '/src/controller.dart';
 export '/src/message_exception.dart';

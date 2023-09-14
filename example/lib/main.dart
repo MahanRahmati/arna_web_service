@@ -1,6 +1,6 @@
-import 'package:arna/arna.dart';
 import 'package:arna_logger/arna_logger.dart';
 import 'package:arna_web_service/arna_web_service.dart';
+import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
 
@@ -28,16 +28,16 @@ class _MyAppState extends State<MyApp> with ArnaWebServiceController {
 
   @override
   Widget build(BuildContext context) {
-    return ArnaApp(
-      home: ArnaScaffold(
-        headerBar: ArnaHeaderBar(title: 'Arna Web Service Demo'),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Arna Web Service Demo')),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ArnaButton.text(
-                label: isLoading ? 'Loading...' : 'Click Me!',
+              TextButton(
                 onPressed: onButtonPressed,
+                child: Text(isLoading ? 'Loading...' : 'Click Me!'),
               ),
             ],
           ),
