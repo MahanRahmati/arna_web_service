@@ -11,8 +11,6 @@ dependencies:
     sdk: flutter
   arna_web_service:
     path: ../
-  arna:
-    git: https://github.com/MahanRahmati/Arna.git
   arna_logger: ^1.1.0
 
 dev_dependencies:
