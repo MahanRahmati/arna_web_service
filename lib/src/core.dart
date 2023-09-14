@@ -50,7 +50,7 @@ class ArnaWebService {
   Future<Response?> head(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, String>? queryParameters,
+    final Map<String, dynamic>? queryParameters,
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -77,6 +77,16 @@ class ArnaWebService {
 
     // QueryParameters
     if (queryParameters != null) {
+      if (queryParameters is! Map<String, String?> ||
+          queryParameters is! Map<String, Iterable<String>?>) {
+        _logger(
+          true,
+          title: 'Head - QueryParameters',
+          data:
+              'QueryParameters must be Map<String, String?> or Map<String, Iterable<String>?>',
+        );
+        return null;
+      }
       uri = uri.replace(queryParameters: queryParameters);
       _logger(
         useLogger,
@@ -103,7 +113,7 @@ class ArnaWebService {
   Future<Response?> get(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, String>? queryParameters,
+    final Map<String, dynamic>? queryParameters,
     final String? token,
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
@@ -130,6 +140,16 @@ class ArnaWebService {
 
     // QueryParameters
     if (queryParameters != null) {
+      if (queryParameters is! Map<String, String?> ||
+          queryParameters is! Map<String, Iterable<String>?>) {
+        _logger(
+          true,
+          title: 'Get - QueryParameters',
+          data:
+              'QueryParameters must be Map<String, String?> or Map<String, Iterable<String>?>',
+        );
+        return null;
+      }
       uri = uri.replace(queryParameters: queryParameters);
       _logger(useLogger, title: 'Get - QueryParameters', data: queryParameters);
     }
@@ -153,7 +173,7 @@ class ArnaWebService {
   Future<Response?> post(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, String>? queryParameters,
+    final Map<String, dynamic>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -181,6 +201,16 @@ class ArnaWebService {
 
     // QueryParameters
     if (queryParameters != null) {
+      if (queryParameters is! Map<String, String?> ||
+          queryParameters is! Map<String, Iterable<String>?>) {
+        _logger(
+          true,
+          title: 'Post - QueryParameters',
+          data:
+              'QueryParameters must be Map<String, String?> or Map<String, Iterable<String>?>',
+        );
+        return null;
+      }
       uri = uri.replace(queryParameters: queryParameters);
       _logger(
         useLogger,
@@ -217,7 +247,7 @@ class ArnaWebService {
   Future<Response?> put(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, String>? queryParameters,
+    final Map<String, dynamic>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -245,13 +275,23 @@ class ArnaWebService {
 
     // QueryParameters
     if (queryParameters != null) {
+      if (queryParameters is! Map<String, String?> ||
+          queryParameters is! Map<String, Iterable<String>?>) {
+        _logger(
+          true,
+          title: 'Put - QueryParameters',
+          data:
+              'QueryParameters must be Map<String, String?> or Map<String, Iterable<String>?>',
+        );
+        return null;
+      }
       uri = uri.replace(queryParameters: queryParameters);
       _logger(useLogger, title: 'Put - QueryParameters', data: queryParameters);
     }
 
     // Body
     if (body != null) {
-      _logger(useLogger, title: 'Post - Body', data: body);
+      _logger(useLogger, title: 'Put - Body', data: body);
     }
     try {
       return await _client
@@ -276,7 +316,7 @@ class ArnaWebService {
   Future<Response?> patch(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, String>? queryParameters,
+    final Map<String, dynamic>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -304,6 +344,16 @@ class ArnaWebService {
 
     // QueryParameters
     if (queryParameters != null) {
+      if (queryParameters is! Map<String, String?> ||
+          queryParameters is! Map<String, Iterable<String>?>) {
+        _logger(
+          true,
+          title: 'Patch - QueryParameters',
+          data:
+              'QueryParameters must be Map<String, String?> or Map<String, Iterable<String>?>',
+        );
+        return null;
+      }
       uri = uri.replace(queryParameters: queryParameters);
       _logger(
         useLogger,
@@ -338,7 +388,7 @@ class ArnaWebService {
   Future<Response?> delete(
     Uri uri, {
     final Map<String, String>? headers,
-    final Map<String, String>? queryParameters,
+    final Map<String, dynamic>? queryParameters,
     final Map<String, dynamic>? body,
     final String? token,
     final void Function()? onConnectionError,
@@ -366,6 +416,16 @@ class ArnaWebService {
 
     // QueryParameters
     if (queryParameters != null) {
+      if (queryParameters is! Map<String, String?> ||
+          queryParameters is! Map<String, Iterable<String>?>) {
+        _logger(
+          true,
+          title: 'Delete - QueryParameters',
+          data:
+              'QueryParameters must be Map<String, String?> or Map<String, Iterable<String>?>',
+        );
+        return null;
+      }
       uri = uri.replace(queryParameters: queryParameters);
       _logger(
         useLogger,

@@ -1,3 +1,7 @@
+## 1.9.0
+
+- Update logic of queryParameters
+
 ## 1.8.0
 
 - Add logic for queryParameters
