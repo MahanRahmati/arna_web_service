@@ -1,8 +1,6 @@
-import 'package:arna_logger/arna_logger.dart' show arnaLogger;
-import 'package:connectivity_plus/connectivity_plus.dart'
-    show Connectivity, ConnectivityResult;
-import 'package:dio/dio.dart'
-    show BaseOptions, Dio, DioException, DioExceptionType, Response;
+import 'package:arna_logger/arna_logger.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:dio/dio.dart';
 
 /// The class that takes care of HTTP client and connections across multiple
 /// requests to the server.
