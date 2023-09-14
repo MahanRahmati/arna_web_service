@@ -9,7 +9,7 @@ import 'package:dio/dio.dart'
 class ArnaWebService {
   ArnaWebService._();
 
-  /// Creates an ArnaDioWebService.
+  /// Creates an ArnaWebService.
   factory ArnaWebService.service() => _arnaWebService;
 
   static final ArnaWebService _arnaWebService = ArnaWebService._();
