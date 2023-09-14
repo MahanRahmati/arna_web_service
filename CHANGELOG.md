@@ -1,6 +1,7 @@
-## 1.9.0
+## 2.0.0
 
-- Update logic of queryParameters
+- Use dio
+- Update core logic
 
 ## 1.8.0
 
