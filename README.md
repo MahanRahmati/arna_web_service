@@ -16,7 +16,7 @@ Add Arna Web Service as a dependency in your pubspec.yaml:
 
 ```yaml
 dependencies:
-  arna_web_service: ^2.0.0
+  arna_web_service: ^2.1.0
 ```
 
 Then, run flutter pub get to install the package.
@@ -33,6 +33,12 @@ After that extend your class:
 
 ```dart
 class APIController extends ArnaWebServiceController  {}
+```
+
+Or directly create an instance:
+
+```dart
+final ArnaWebService webService = ArnaWebService.service();
 ```
 
 You can then use the web service to make API calls:

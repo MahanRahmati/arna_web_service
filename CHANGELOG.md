@@ -1,3 +1,8 @@
+## 2.1.0
+
+- Update dio
+- Export ArnaWebService
+
 ## 2.0.0
 
 - Use dio
