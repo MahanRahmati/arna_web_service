@@ -1,3 +1,8 @@
+## 2.2.0
+
+- Add onDioException
+- Add onException
+
 ## 2.1.0
 
 - Update dio

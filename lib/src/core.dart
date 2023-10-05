@@ -51,6 +51,8 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final void Function(DioException)? onDioException,
+    final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
@@ -63,6 +65,8 @@ class ArnaWebService {
       onConnectionError: onConnectionError,
       timeoutDuration: timeoutDuration,
       onTimeout: onTimeout,
+      onDioException: onDioException,
+      onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
     );
@@ -77,6 +81,8 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final void Function(DioException)? onDioException,
+    final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
@@ -89,6 +95,8 @@ class ArnaWebService {
       onConnectionError: onConnectionError,
       timeoutDuration: timeoutDuration,
       onTimeout: onTimeout,
+      onDioException: onDioException,
+      onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
     );
@@ -105,6 +113,8 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final void Function(DioException)? onDioException,
+    final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
@@ -118,6 +128,8 @@ class ArnaWebService {
       onConnectionError: onConnectionError,
       timeoutDuration: timeoutDuration,
       onTimeout: onTimeout,
+      onDioException: onDioException,
+      onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
     );
@@ -134,6 +146,8 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final void Function(DioException)? onDioException,
+    final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
@@ -147,6 +161,8 @@ class ArnaWebService {
       onConnectionError: onConnectionError,
       timeoutDuration: timeoutDuration,
       onTimeout: onTimeout,
+      onDioException: onDioException,
+      onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
     );
@@ -163,6 +179,8 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final void Function(DioException)? onDioException,
+    final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
@@ -176,6 +194,8 @@ class ArnaWebService {
       onConnectionError: onConnectionError,
       timeoutDuration: timeoutDuration,
       onTimeout: onTimeout,
+      onDioException: onDioException,
+      onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
     );
@@ -191,6 +211,8 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final void Function(DioException)? onDioException,
+    final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
@@ -204,6 +226,8 @@ class ArnaWebService {
       onConnectionError: onConnectionError,
       timeoutDuration: timeoutDuration,
       onTimeout: onTimeout,
+      onDioException: onDioException,
+      onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
     );
@@ -220,6 +244,8 @@ class ArnaWebService {
     final void Function()? onConnectionError,
     final Duration timeoutDuration = const Duration(seconds: 5),
     final void Function()? onTimeout,
+    final void Function(DioException)? onDioException,
+    final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
   }) async {
@@ -268,9 +294,11 @@ class ArnaWebService {
         return null;
       }
       _logger(useLogger, title: '$method - Error', data: e);
+      onDioException?.call(e);
       return null;
     } catch (e) {
       _logger(useLogger, title: '$method - Error', data: e);
+      onException?.call(e);
       return null;
     }
   }
