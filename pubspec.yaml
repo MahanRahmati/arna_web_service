@@ -1,7 +1,7 @@
 name: arna_web_service
 description: Arna Web Service is a simple and powerful HTTP package for Flutter.
 homepage: https://github.com/MahanRahmati/arna_web_service
-version: 2.1.0
+version: 2.2.0
 topics:
   - network
   - http
