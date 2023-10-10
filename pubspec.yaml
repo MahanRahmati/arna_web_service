@@ -15,7 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   arna_logger: ^1.1.0
-  connectivity_plus: ^4.0.2
+  connectivity_plus: ">=4.0.2 <6.0.0"
   dio: ^5.3.3
 
 dev_dependencies:
