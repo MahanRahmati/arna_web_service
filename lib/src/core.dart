@@ -55,6 +55,8 @@ class ArnaWebService {
     final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
+    final ProgressCallback? onSendProgress,
+    final ProgressCallback? onReceiveProgress,
   }) async {
     return request(
       uri,
@@ -69,6 +71,8 @@ class ArnaWebService {
       onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
     );
   }
 
@@ -85,6 +89,8 @@ class ArnaWebService {
     final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
+    final ProgressCallback? onSendProgress,
+    final ProgressCallback? onReceiveProgress,
   }) async {
     return request(
       uri,
@@ -99,6 +105,8 @@ class ArnaWebService {
       onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
     );
   }
 
@@ -117,6 +125,8 @@ class ArnaWebService {
     final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
+    final ProgressCallback? onSendProgress,
+    final ProgressCallback? onReceiveProgress,
   }) async {
     return request(
       uri,
@@ -132,6 +142,8 @@ class ArnaWebService {
       onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
     );
   }
 
@@ -150,6 +162,8 @@ class ArnaWebService {
     final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
+    final ProgressCallback? onSendProgress,
+    final ProgressCallback? onReceiveProgress,
   }) async {
     return request(
       uri,
@@ -165,6 +179,8 @@ class ArnaWebService {
       onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
     );
   }
 
@@ -183,6 +199,8 @@ class ArnaWebService {
     final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
+    final ProgressCallback? onSendProgress,
+    final ProgressCallback? onReceiveProgress,
   }) async {
     return request(
       uri,
@@ -198,6 +216,8 @@ class ArnaWebService {
       onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
     );
   }
 
@@ -215,6 +235,8 @@ class ArnaWebService {
     final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
+    final ProgressCallback? onSendProgress,
+    final ProgressCallback? onReceiveProgress,
   }) async {
     return request(
       uri,
@@ -230,6 +252,8 @@ class ArnaWebService {
       onException: onException,
       useLogger: useLogger,
       checkConnectivity: checkConnectivity,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
     );
   }
 
@@ -248,6 +272,8 @@ class ArnaWebService {
     final void Function(Object)? onException,
     final bool useLogger = false,
     final bool checkConnectivity = true,
+    final ProgressCallback? onSendProgress,
+    final ProgressCallback? onReceiveProgress,
   }) async {
     // Connectivity check
     if (checkConnectivity) {
@@ -284,7 +310,12 @@ class ArnaWebService {
     );
 
     try {
-      final Response<T> response = await dio.requestUri(uri, data: body);
+      final Response<T> response = await dio.requestUri(
+        uri,
+        data: body,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
       _logger(useLogger, title: '$method - Response', data: response);
       return response;
     } on DioException catch (e) {

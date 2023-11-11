@@ -1,3 +1,8 @@
+## 2.3.0
+
+- Add onSendProgress
+- Add onReceiveProgress
+
 ## 2.2.0
 
 - Add onDioException
