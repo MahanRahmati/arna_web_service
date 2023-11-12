@@ -1,6 +1,8 @@
 ## 2.4.0
 
 - Add useFormData
+- Export connectivity_plus
+- Export http_parser
 
 ## 2.3.0
 

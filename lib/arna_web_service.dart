@@ -3,7 +3,9 @@ library arna_web_service;
 
 export 'dart:convert';
 
+export 'package:connectivity_plus/connectivity_plus.dart';
 export 'package:dio/dio.dart';
+export 'package:http_parser/http_parser.dart';
 
 export '/src/controller.dart';
 export '/src/core.dart';
