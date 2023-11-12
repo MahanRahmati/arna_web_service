@@ -1,3 +1,7 @@
+## 2.4.0
+
+- Add useFormData
+
 ## 2.3.0
 
 - Add onSendProgress

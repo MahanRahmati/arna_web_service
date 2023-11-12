@@ -16,7 +16,7 @@ Add Arna Web Service as a dependency in your pubspec.yaml:
 
 ```yaml
 dependencies:
-  arna_web_service: ^2.3.0
+  arna_web_service: ^2.4.0
 ```
 
 Then, run flutter pub get to install the package.

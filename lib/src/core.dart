@@ -57,6 +57,7 @@ class ArnaWebService {
     final bool checkConnectivity = true,
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
+    final bool useFormData = false,
   }) async {
     return request(
       uri,
@@ -73,6 +74,7 @@ class ArnaWebService {
       checkConnectivity: checkConnectivity,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
+      useFormData: useFormData,
     );
   }
 
@@ -91,6 +93,7 @@ class ArnaWebService {
     final bool checkConnectivity = true,
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
+    final bool useFormData = false,
   }) async {
     return request(
       uri,
@@ -107,6 +110,7 @@ class ArnaWebService {
       checkConnectivity: checkConnectivity,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
+      useFormData: useFormData,
     );
   }
 
@@ -127,6 +131,7 @@ class ArnaWebService {
     final bool checkConnectivity = true,
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
+    final bool useFormData = false,
   }) async {
     return request(
       uri,
@@ -144,6 +149,7 @@ class ArnaWebService {
       checkConnectivity: checkConnectivity,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
+      useFormData: useFormData,
     );
   }
 
@@ -164,6 +170,7 @@ class ArnaWebService {
     final bool checkConnectivity = true,
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
+    final bool useFormData = false,
   }) async {
     return request(
       uri,
@@ -181,6 +188,7 @@ class ArnaWebService {
       checkConnectivity: checkConnectivity,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
+      useFormData: useFormData,
     );
   }
 
@@ -201,6 +209,7 @@ class ArnaWebService {
     final bool checkConnectivity = true,
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
+    final bool useFormData = false,
   }) async {
     return request(
       uri,
@@ -218,6 +227,7 @@ class ArnaWebService {
       checkConnectivity: checkConnectivity,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
+      useFormData: useFormData,
     );
   }
 
@@ -237,6 +247,7 @@ class ArnaWebService {
     final bool checkConnectivity = true,
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
+    final bool useFormData = false,
   }) async {
     return request(
       uri,
@@ -254,6 +265,7 @@ class ArnaWebService {
       checkConnectivity: checkConnectivity,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
+      useFormData: useFormData,
     );
   }
 
@@ -274,6 +286,7 @@ class ArnaWebService {
     final bool checkConnectivity = true,
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
+    final bool useFormData = false,
   }) async {
     // Connectivity check
     if (checkConnectivity) {
@@ -298,7 +311,17 @@ class ArnaWebService {
       data: queryParameters,
     );
 
-    _logger(useLogger, title: '$method - Body', data: body);
+    Object? data;
+
+    if (useFormData) {
+      if (body != null) {
+        data = FormData.fromMap(body);
+      }
+    } else {
+      data = body;
+    }
+
+    _logger(useLogger, title: '$method - Body', data: data);
 
     final Dio dio = Dio(
       BaseOptions(
@@ -312,7 +335,7 @@ class ArnaWebService {
     try {
       final Response<T> response = await dio.requestUri(
         uri,
-        data: body,
+        data: data,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
