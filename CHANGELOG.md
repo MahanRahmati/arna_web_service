@@ -1,3 +1,7 @@
+## 2.5.0
+
+- Add cancelToken
+
 ## 2.4.0
 
 - Add useFormData

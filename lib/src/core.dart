@@ -58,6 +58,7 @@ class ArnaWebService {
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
     final bool useFormData = false,
+    final CancelToken? cancelToken,
   }) async {
     return request(
       uri,
@@ -75,6 +76,7 @@ class ArnaWebService {
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
       useFormData: useFormData,
+      cancelToken: cancelToken,
     );
   }
 
@@ -94,6 +96,7 @@ class ArnaWebService {
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
     final bool useFormData = false,
+    final CancelToken? cancelToken,
   }) async {
     return request(
       uri,
@@ -111,6 +114,7 @@ class ArnaWebService {
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
       useFormData: useFormData,
+      cancelToken: cancelToken,
     );
   }
 
@@ -132,6 +136,7 @@ class ArnaWebService {
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
     final bool useFormData = false,
+    final CancelToken? cancelToken,
   }) async {
     return request(
       uri,
@@ -150,6 +155,7 @@ class ArnaWebService {
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
       useFormData: useFormData,
+      cancelToken: cancelToken,
     );
   }
 
@@ -171,6 +177,7 @@ class ArnaWebService {
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
     final bool useFormData = false,
+    final CancelToken? cancelToken,
   }) async {
     return request(
       uri,
@@ -189,6 +196,7 @@ class ArnaWebService {
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
       useFormData: useFormData,
+      cancelToken: cancelToken,
     );
   }
 
@@ -210,6 +218,7 @@ class ArnaWebService {
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
     final bool useFormData = false,
+    final CancelToken? cancelToken,
   }) async {
     return request(
       uri,
@@ -228,6 +237,7 @@ class ArnaWebService {
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
       useFormData: useFormData,
+      cancelToken: cancelToken,
     );
   }
 
@@ -248,6 +258,7 @@ class ArnaWebService {
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
     final bool useFormData = false,
+    final CancelToken? cancelToken,
   }) async {
     return request(
       uri,
@@ -266,6 +277,7 @@ class ArnaWebService {
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
       useFormData: useFormData,
+      cancelToken: cancelToken,
     );
   }
 
@@ -287,6 +299,7 @@ class ArnaWebService {
     final ProgressCallback? onSendProgress,
     final ProgressCallback? onReceiveProgress,
     final bool useFormData = false,
+    final CancelToken? cancelToken,
   }) async {
     // Connectivity check
     if (checkConnectivity) {
@@ -336,6 +349,7 @@ class ArnaWebService {
       final Response<T> response = await dio.requestUri(
         uri,
         data: data,
+        cancelToken: cancelToken,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
